@@ -2,5 +2,6 @@
 
 -@posts.each do |post|
   %h2= link_to post.title, post
+  %p= link_to 'Edit', [:edit, post]
 
 =link_to '+ Post', new_post_path
