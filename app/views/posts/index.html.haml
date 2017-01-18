@@ -2,6 +2,8 @@
 
 -@posts.each do |post|
   %h2= link_to post.title, post
-  %p= link_to 'Edit', [:edit, post]
+  %p
+    =link_to 'Edit', [:edit, post]
+    =link_to 'Delete', post, method: :delete, data:{ confirm:'Are you sure?' }
 
 =link_to '+ Post', new_post_path

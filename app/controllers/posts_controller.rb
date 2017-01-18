@@ -75,6 +75,17 @@ class PostsController < ApplicationController
   end
   # No view. Explicitly redirect_to|render action|view
 
+  # DELETE /posts/:id
+  #   <a href='/posts/1', rel='nofollow', data-method='delete'>..</a>
+  #   =link_to .. @post | post_path( @post ), method: :delete
+  #   delete '/posts/:id', to: 'posts#destroy'
+  #   router reads :id value from the request and assigns it to params[:id] key
+  def destroy
+    @post = Post.find params[:id]
+    @post.destroy
+    redirect_to posts_path, notice:'Post deleted.'
+  end
+  # No view. Explicitly redirect_to ation.
 
   private
     def post_params
