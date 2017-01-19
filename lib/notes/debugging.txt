@@ -1,5 +1,36 @@
 ################################################################################
 # 1-19-17: #####################################################################
+################################################################################
+• WHAT, WHERE: CommentsController::create wouldn't create the new comment:
+
+    comment = @post.comments.create( comment_params )
+
+• BUG: a quick dig with byebug (placed in create action) in console revealed:
+    > ...
+    > (byebug) comment.new_record?
+    > true
+    > (byebug) comment.valid?
+    > false
+    > (byebug) comment.errors.size
+    > 1
+    > (byebug) comment.errors.full_messages
+    > ["User must exist"]                               <= NICE! Thanks byebug!
+
+: Because the 2 models are already associated:
+    Comment :: belongs_to :user
+    User :: has_many :comments
+
+• SOLUTION: new comment must be assigned a user. Concisely:
+
+    comment = @post.comments.create( comment_params.merge( user: current_user ) )
+
+  : Or, the longwinded:
+
+    comment = @post.comments.new( comment_params )
+    comment.user = current_user
+    comment.save
+
+################################################################################
 • Dealing with collapsing top margin of a contained element:
 : It turned out no problem here. But for future reference:
   http://www.complexspiral.com/publications/uncollapsing-margins/
