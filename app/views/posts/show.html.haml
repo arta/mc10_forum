@@ -14,7 +14,10 @@
         =link_to 'Edit', [:edit, @post]
         =link_to 'Delete', @post, method: :delete, data:{ confirm:'Are you sure?' }
 
+  #comments
+    =render @post.comments.reject( &:new_record? )
+
   #new_comment
     =simple_form_for [@post, @post.comments.new] do |f|
-      =f.input :comment
+      =f.input :comment, label: false, placeholder:  'Have a comment to share?'
       =f.button :submit

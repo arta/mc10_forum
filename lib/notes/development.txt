@@ -1,6 +1,25 @@
 ################################################################################
 # 1-19-17: #####################################################################
 ################################################################################
+• Listing nested resources on parent's show page (Comments on a Post here)
+  along with a form for the nested resource:
+: Again, dealing with not displaying the comment created for the form.
+
+• New observation:
+: When the form is above the list, the .new_record? must be rejected
+  even when it is created in the form on the fly rather than in the controller.
+
+    =simple_form_for [@post, @post.comments.new] do |f|
+      =f.input :comment, label: false, placeholder:  'Have a comment to share?'
+      =f.button :submit
+
+    =render @post.comments.reject( &:new_record? )
+
+: If not rejected, the new comment is loaded into the collection, breaking up
+  the _comment partial when it is loaded for render:
+
+    > undefined method `email' for nil:NilClass
+################################################################################
 • Devise :: authenticate_user! problem:
 : it DOES NOT prevent signed in user from editing other's records !!!!
 : turns out that's a domain of AUTHORIZATION, not authentication ... ok ... :)

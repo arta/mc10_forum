@@ -55,13 +55,14 @@ body { background-color:#EDEFF0; font-family:'Lato', sans-serif; }
   border-radius: .5rem;
   margin-top: 1rem;
   padding: .5rem 5%;
-  .post {
-    border-bottom: 1px solid #D1D1D1;
-    margin: 1em 0;
-    padding: 1em 0;
-  }
-  .post:last-child { border-bottom: none; }
 }
+
+.post, .comment {
+  border-bottom: 1px solid #D1D1D1;
+  margin: 1em 0;
+  padding: 1em 0;
+}
+.post:last-child { border-bottom: none; }
 
 p.content {
   color: #B2BAC2;
