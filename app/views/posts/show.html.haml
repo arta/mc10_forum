@@ -1,5 +1,8 @@
 %h1= @post.title
 %p= @post.content
+%p
+  Posted
+  =time_ago_in_words @post.created_at
 
 =link_to 'Back', posts_path
 =link_to 'Edit', [:edit, @post]

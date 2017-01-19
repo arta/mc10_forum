@@ -3,6 +3,8 @@
 -@posts.each do |post|
   %h2= link_to post.title, post
   %p
+    Posted
+    =time_ago_in_words post.created_at
     =link_to 'Edit', [:edit, post]
     =link_to 'Delete', post, method: :delete, data:{ confirm:'Are you sure?' }
 
