@@ -3,6 +3,8 @@
 %p
   Posted
   =time_ago_in_words @post.created_at
+  by
+  =@post.user.email
 
 =link_to 'Back', posts_path
 =link_to 'Edit', [:edit, @post]
