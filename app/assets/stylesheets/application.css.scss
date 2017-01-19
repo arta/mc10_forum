@@ -14,15 +14,49 @@
  *= require_self
  */
 
-body { font-family: 'Lato', sans-serif; }
+body { background-color:#EDEFF0; font-family:'Lato', sans-serif; }
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 1140px;
-  width: 60%;
-}
+.clearfix:before, .clearfix:after { content:''; display:table; }
+.clearfix:after { clear:both; }
+
+.wrapper { margin:0 auto; max-width:1140px; width:60%; }
 
 .main-header {
-  @extend .wrapper;
-  width: 80%;
+  background-color: white;
+  margin: 0 auto;
+  width: 100%;
+  #logo {
+    float: left;
+    p { font-size:2.1rem; font-weight:700; letter-spacing:-1px; }
+  }
+  #buttons {
+    float:right;
+    a {
+      line-height: 6.6rem;
+      background: #397CAC;
+      padding: .5em 1em;
+      border-radius: 0.2em;
+      color: white;
+      text-decoration: none;
+      font-weight: 100;
+    }
+  }
+}
+
+#posts {
+  background-color: white;
+  border-radius: .5rem;
+  margin-top: 1rem;
+  padding: .5rem 5%;
+  .post {
+    border-bottom: 1px solid #D1D1D1;
+    margin: 1em 0;
+    padding: 1em 0;
+    .title {
+      margin: 0;
+      a { color:#397CAC; font-size:2.19rem; font-weight:100; text-decoration:none; }
+    }
+    .date { color:#B2BAC2; font-size:1.2rem; margin-top:0.5rem; }
+  }
+  .post:last-child { border-bottom: none; }
 }

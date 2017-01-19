@@ -1,0 +1,6 @@
+################################################################################
+# 1-19-17: #####################################################################
+• Dealing with collapsing top margin of a contained element:
+: It turned out no problem here. But for future reference:
+  http://www.complexspiral.com/publications/uncollapsing-margins/
+################################################################################

@@ -6,13 +6,15 @@
     =csrf_meta_tags
     =stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     =stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Lato:300,400,700'
+    =stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'
     =javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %header.main-header
-      #logo
-        %p Arta's Rails Forum
-      #buttons
-        =link_to '+ Post', new_post_path
+    %header.main-header.clearfix
+      .wrapper
+        #logo
+          %p ARTA'S RAILS FORUM
+        #buttons
+          =link_to '+ Post', new_post_path
 
     .wrapper
       -flash.each do |name, msg|
