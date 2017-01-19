@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   #   =link_to .. new_post_path
   #   get '/posts/new', to:'posts#new', as: new_post(_path is implied)
   def new
-    @post = Post.new
+    @post = current_user.posts.new
   end
   # Implicitly renders /posts/new haml view with /posts/_form partial
   #   =form_for @post .. with a @post.new_record? = true
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   #   =form_for @post .. when @post.new_record? == true
   #   post '/posts', to: 'posts#create'
   def create
-    @post = Post.new post_params
+    @post = current_user.posts.new post_params
     if @post.save
       redirect_to @post, notice:'Post created.'
     else
