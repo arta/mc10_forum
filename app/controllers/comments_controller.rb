@@ -13,6 +13,19 @@ class CommentsController < ApplicationController
   end
   # No view. Excplicitly redirect_to|render action|view
 
+  # DELETE /posts/:post_id/:comments/:id
+  #   <a href='/posts/1/comments/1', rel='nofollow', data-method='delete'>..</a>
+  #   =link_to .. [@post, @comment], method: :delete
+  #   router reads :post_id, :id values from the request and
+  #   assignes them to the params namesake keys: params[:post_id], params[:id]
+  def destroy
+    @post = Post.find params[:post_id]
+    comment = @post.comments.find( params[:id] )
+    comment.destroy
+    redirect_to @post, notice:'Comment deleted.'
+  end
+  # No View. Explicitly redirect_to action
+
   private
     def comment_params
       params.require( :comment ).permit( :comment )

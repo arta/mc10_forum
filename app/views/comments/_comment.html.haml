@@ -1,3 +1,7 @@
 .comment
   %p= comment.comment
-  %p= comment.user.email
+  %p
+    By
+    =comment.user.email
+    -if current_user == comment.user
+      =link_to 'Delete', [@post, comment], method: :delete
