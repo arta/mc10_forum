@@ -7,7 +7,15 @@
     =stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     =javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    -flash.each do |name, msg|
-      =content_tag :p, msg, class:"#{name}"
+    %header.main-header
+      #logo
+        %p Arta's Rails Forum
+      #buttons
+        =link_to '+ Post', new_post_path
 
-    =yield
+    .wrapper
+      -flash.each do |name, msg|
+        =content_tag :p, msg, class:"#{name}"
+
+    .wrapper
+      =yield

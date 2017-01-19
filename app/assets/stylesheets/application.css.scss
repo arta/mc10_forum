@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1140px;
+  width: 60%;
+}
+
+.main-header {
+  @extend .wrapper;
+  width: 80%;
+}
