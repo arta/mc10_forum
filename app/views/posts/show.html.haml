@@ -1,11 +1,14 @@
-%h1= @post.title
-%p= @post.content
-%p
-  Posted
-  =time_ago_in_words @post.created_at
-  by
-  =@post.user.email
+#post-content
+  .post
+    %h1.title= @post.title
+    %p.date
+      Posted
+      =time_ago_in_words @post.created_at
+      by
+      =@post.user.email
+    %p.content= @post.content
 
-=link_to 'Back', posts_path
-=link_to 'Edit', [:edit, @post]
-=link_to 'Delete', @post, method: :delete, data:{ confirm:'Are you sure?' }
+    %p
+      =link_to 'Back', posts_path
+      =link_to 'Edit', [:edit, @post]
+      =link_to 'Delete', @post, method: :delete, data:{ confirm:'Are you sure?' }
