@@ -4,6 +4,8 @@
 • Devise :: authenticate_user! problem:
 : it DOES NOT prevent signed in user from editing other's records !!!!
 : turns out that's a domain of AUTHORIZATION, not authentication ... ok ... :)
+• cancancan:
+  https://github.com/CanCanCommunity/cancancan
 ################################################################################
 • CSS normalize:
   https://cdnjs.com/libraries/normalize
