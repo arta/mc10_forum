@@ -7,6 +7,7 @@
         =time_ago_in_words post.created_at
         by
         =post.user.email
-      %p
-        =link_to 'Edit', [:edit, post]
-        =link_to 'Delete', post, method: :delete, data:{ confirm:'Are you sure?' }
+      -if post.user == current_user
+        %p
+          =link_to 'Edit', [:edit, post]
+          =link_to 'Delete', post, method: :delete, data:{ confirm:'Are you sure?' }

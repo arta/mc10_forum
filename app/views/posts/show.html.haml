@@ -8,7 +8,8 @@
       =@post.user.email
     %p.content= @post.content
 
-    %p
-      =link_to 'Back', posts_path
-      =link_to 'Edit', [:edit, @post]
-      =link_to 'Delete', @post, method: :delete, data:{ confirm:'Are you sure?' }
+    -if @post.user == current_user
+      %p
+        =link_to 'Back', posts_path
+        =link_to 'Edit', [:edit, @post]
+        =link_to 'Delete', @post, method: :delete, data:{ confirm:'Are you sure?' }
