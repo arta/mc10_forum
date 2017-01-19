@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   # POST /posts/:post_id/comments
   #   html:   <form action='/posts/1/comments', method='post' ..>
