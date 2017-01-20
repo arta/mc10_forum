@@ -43,6 +43,7 @@ class PostsController < ApplicationController
   #   get '/posts/:id', to: 'posts#show', as: post(_path is implied)
   #   router reads :id value from the request and assigns it to params[:id]
   def show
+    @comment = @post.comments.new
   end
   # Implicitly renders /posts/show haml view with @post :id available to it
 
