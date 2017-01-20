@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   #   to :post_id key in params hash ( params[:post_id] )
   def create
     post = Post.find params[:post_id]
-    comment = post.comments.new( comment_params.merge( user:current_user ) )
+    comment = post.comments.new( comment_params.merge( user: current_user ) )
     flash[:notice] = 'Comment posted.' if comment.save
     redirect_to post
   end
