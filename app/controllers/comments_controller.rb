@@ -53,10 +53,10 @@ class CommentsController < ApplicationController
   #   Router reads :post_id, :id values from the request and assignes them
   #   to the params namesake keys: params[:post_id], params[:id]
   def destroy
-    @post = Post.find params[:post_id]
-    comment = @post.comments.find( params[:id] )
+    comment = Comment.find params[:id]
+    post = comment.post
     comment.destroy
-    redirect_to @post, notice:'Comment deleted.'
+    redirect_to post, notice:'Comment deleted.'
   end
   # No View. Explicitly redirect_to action
 
