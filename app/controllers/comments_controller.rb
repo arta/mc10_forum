@@ -9,10 +9,10 @@ class CommentsController < ApplicationController
   #   Router reads :post_id value from the request and assigns it
   #   to :post_id key in params hash ( params[:post_id] )
   def create
-    @post = Post.find params[:post_id]
-    comment = @post.comments.create( comment_params.merge( user:current_user ) )
-    flash[:notice] = 'Comment posted.' if comment
-    redirect_to @post
+    post = Post.find params[:post_id]
+    comment = post.comments.new( comment_params.merge( user:current_user ) )
+    flash[:notice] = 'Comment posted.' if comment.save
+    redirect_to post
   end
   # No view. Excplicitly redirect_to|render action|view
 
@@ -40,9 +40,9 @@ class CommentsController < ApplicationController
   #   Router reads :post_id, :id values from the request and assigns them
   #   to namesake keys of params hash ( params[:post_id], params[:id] )
   def update
-    @comment = Comment.find params[:id]
-    @comment.update( comment_params )
-    redirect_to @comment.post, notice: 'Comment updated.'
+    comment = Comment.find params[:id]
+    comment.update( comment_params )
+    redirect_to comment.post, notice: 'Comment updated.'
   end
   # No view. Explicitly redirect_to|render action|view
 
