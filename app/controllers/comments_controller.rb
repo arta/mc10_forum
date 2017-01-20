@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_comment, except: :create
 
   # POST /posts/:post_id/comments
   #   html:   <form action='/posts/1/comments', method='post' ..>
@@ -23,7 +24,6 @@ class CommentsController < ApplicationController
   #   Router reads :post_id, :id values from the request and assigns them
   #   to namesake keys of params hash ( params[:post_id], params[:id] )
   def edit
-    @comment = Comment.find params[:id]
     @post = @comment.post
   end
   # Implicitly renders /posts/:post_id/comments/:id/edit haml view which
@@ -40,9 +40,8 @@ class CommentsController < ApplicationController
   #   Router reads :post_id, :id values from the request and assigns them
   #   to namesake keys of params hash ( params[:post_id], params[:id] )
   def update
-    comment = Comment.find params[:id]
-    comment.update( comment_params )
-    redirect_to comment.post, notice: 'Comment updated.'
+    @comment.update( comment_params )
+    redirect_to @comment.post, notice: 'Comment updated.'
   end
   # No view. Explicitly redirect_to|render action|view
 
@@ -53,9 +52,8 @@ class CommentsController < ApplicationController
   #   Router reads :post_id, :id values from the request and assignes them
   #   to the params namesake keys: params[:post_id], params[:id]
   def destroy
-    comment = Comment.find params[:id]
-    post = comment.post
-    comment.destroy
+    post = @comment.post
+    @comment.destroy
     redirect_to post, notice:'Comment deleted.'
   end
   # No View. Explicitly redirect_to action
@@ -63,5 +61,9 @@ class CommentsController < ApplicationController
   private
     def comment_params
       params.require( :comment ).permit( :comment )
+    end
+
+    def set_comment
+      @comment = Comment.find params[:id]
     end
 end
