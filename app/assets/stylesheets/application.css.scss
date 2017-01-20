@@ -20,7 +20,7 @@ body { background-color:#EDEFF0; font-family:'Lato', sans-serif; }
 .clearfix:after { clear:both; }
 
 .wrapper { margin:0 auto; max-width:1140px; width:60%; }
-
+.wrapper--body { @extend .wrapper; margin-bottom: 3em; }
 .main-header {
   background-color: white;
   margin: 0 auto;
@@ -57,7 +57,7 @@ body { background-color:#EDEFF0; font-family:'Lato', sans-serif; }
   padding: .5rem 5%;
 }
 
-.post, .comment {
+.post {
   border-bottom: 1px solid #D1D1D1;
   margin: 1em 0;
   padding: 1em 0;
@@ -81,3 +81,72 @@ p.content {
 }
 
 .date { color:#B2BAC2; font-size:1.2rem; margin-top:0.7rem; }
+
+.comment {
+  border-bottom: 1px solid #D1D1D1;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+.comment:last-child { border-bottom: none; }
+
+.contents { width:65%; float:left; }
+
+.comment-content { margin:0; padding:0; }
+
+.comment-author {
+  color: #397CAC;
+	margin-top: .8em;
+	font-size: 0.8em;
+	font-weight: 700;
+}
+
+.buttons {
+  width: 35%;
+  float: left;
+  font-size: .8em;
+  text-align: right;
+  padding-top: 1.5em;
+  a {
+    color: #397CAC;
+    border: 1px solid #397CAC;
+    padding: .5em 1em;
+    border-radius: 0.2em;
+    text-decoration: none;
+    margin-right: 2%;
+  }
+}
+.post .buttons {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 2em;
+}
+input[type="submit"] {
+	background: #397CAC;
+	border: none;
+	color: white;
+	font-weight: 100;
+	padding: .5em 1em;
+	border-radius: .2em;
+  margin: 1em 0;
+}
+textarea {
+	width: 100%;
+	min-height: 200px;
+	border: 1px solid #d1d1d1;
+	border-radius: .2em;
+}
+
+#post-buttons {
+  border-top: 1px solid #D1D1D1;
+  margin: 1em 0 0;
+  padding: 2em 0;
+}
+
+.button {
+  color: #397CAC;
+  border: 1px solid #397CAC;
+  padding: .5em 1em;
+  border-radius: 0.2em;
+  text-decoration: none;
+  margin-right: 2%;
+}
