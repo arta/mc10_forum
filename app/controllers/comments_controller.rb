@@ -18,13 +18,13 @@ class CommentsController < ApplicationController
 
   # GET /posts/:post_id/:comments/:id/edit
   #   html:   <a href='/posts/1/comments/1/edit'>..</a>
-  #   rails:  =link_to .. [:edit, @post, comment] | edit_post_comment_path
+  #   rails:  =link_to .. [:edit, @post, comment] | edit_post_comment_path( @post, comment )
   #   router: get 'posts/:post_id/comments/:id/edit', to: 'comments#edit', as: edit_post_comment
   #   Router reads :post_id, :id values from the request and assigns them
   #   to namesake keys of params hash ( params[:post_id], params[:id] )
   def edit
-    @post = Post.find params[:post_id]
     @comment = Comment.find params[:id]
+    @post = @comment.post
   end
   # Implicitly renders /posts/:post_id/comments/:id/edit haml view which
   #   renders /comments/_form haml partial which contains

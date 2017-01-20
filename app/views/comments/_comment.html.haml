@@ -4,5 +4,5 @@
     By
     =comment.user.email
     -if current_user == comment.user
-      =link_to 'Edit', [:edit, @post, comment]
-      =link_to 'Delete', [@post, comment], method: :delete, data:{ confirm:'Are you sure?' }
+      =link_to 'Edit', [:edit, comment.post, comment]
+      =link_to 'Delete', [comment.post, comment], method: :delete, data:{ confirm:'Are you sure?' }
